@@ -3,6 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import hiplot as hip
 import seaborn as sns
+import plotly
 
 df1=pd.read_csv('data.csv')
 st.write("Fawaz Imtiaz")
@@ -73,11 +74,14 @@ if st.button("Generate Plot"):
         sns.histplot(data=df, x=xv, hue=zv, kde=True)
         st.pyplot(fig)
     
-    elif plot_selection == "Scatter Plot":
+    elif selected_plot == "Scatter Plot":
         st.subheader("Scatter Plot")
-        fig, ax = plt.subplots()
-        sns.scatterplot(data=df, x=xv, y=yv, hue=zv)
-        st.pyplot(fig)
+        fig = px.scatter(df, x=xv, y=yv, color=zv, title="Scatter Plot")
+        fig.update_traces(marker=dict(size=6), selector=dict(mode='markers+text'))
+        fig.update_layout(hovermode='closest')
+        fig.update_traces(text=df[zv], textposition='top center')
+        st.plotly_chart(fig)
+
     
     elif plot_selection == "Box Plot":
         st.subheader("Box Plot")
