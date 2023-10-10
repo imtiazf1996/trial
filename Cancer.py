@@ -80,6 +80,7 @@ if st.button("Generate Plot"):
         fig.update_traces(marker=dict(size=6), selector=dict(mode='markers+text'))
         fig.update_layout(hovermode='closest')
         fig.update_traces(text=df[zv], textposition='top center')
+        fig.update_layout(plot_bgcolor="white") 
         st.plotly_chart(fig)
 
     
@@ -96,11 +97,10 @@ if st.button("Generate Plot"):
 
     elif plot_selection == "Pair Plot":
         st.subheader("Pair Plot")
-        st.text("Generating pair plot. This may take a moment...")
-        sns.set(style="ticks")
-        pair_plot = sns.pairplot(data=df, hue=zv, markers=["o", "s"])
-        st.pyplot(pair_plot)
-
+        fig = px.scatter_matrix(df, dimensions=[xv, yv, zv], color=zv, title="Pair Plot")
+        fig.update_layout(plot_bgcolor="white")  
+        st.plotly_chart(fig)
+        
     elif plot_selection == "Violin Plot":
         st.subheader("Violin Plot")
         fig, ax = plt.subplots()
