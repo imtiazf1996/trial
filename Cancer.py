@@ -30,7 +30,7 @@ if st.button("Hide Statistics"):
     button1=False
 
 
-selected_group = st.radio('Choose a feature group to keep:', ['Worst Features', 'Mean Features', 'Standard Error Features'])
+selected_group = st.radio('Choose a feature group to keep:', ['Worst Features', 'Mean Features', 'Standard Error Features', 'Keep All'])
 
 if selected_group == 'Worst Features':
     df = df[['diagnosis'] + ['id'] + list(df.filter(like='worst'))]
@@ -60,7 +60,7 @@ yv=st.selectbox('Please select y or second variiable:',cols)
 plot_selection = st.selectbox("Select a plot type:", ["Histogram", "Scatter Plot", "Box Plot", "HiPlot", "Pair Plot", "Violin Plot"])
 
 # If the plot type requires a hue, allow the user to select it
-if plot_selection in ["Scatter Plot", "Box Plot"]:
+if plot_selection in ["Histogram", "Scatter Plot", "Box Plot", "HiPlot", "Pair Plot", "Violin Plot"]:
     zv=st.selectbox('Please select hue or third variiable:',red_cols)
 else:
     zv = None
