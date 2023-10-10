@@ -104,7 +104,6 @@ if st.button("Generate Plot"):
         
     elif plot_selection == "Violin Plot":
         st.subheader("Violin Plot")
-        fig, ax = plt.subplots()
-        sns.violinplot(data=df, x=xv, y=yv, hue=zv, split=True)
-        fig.update_layout(plot_bgcolor="white") 
-        st.pyplot(fig)
+        fig = px.violin(df, x=xv, y=yv, color=zv, title="Violin Plot")
+        fig.update_layout(plot_bgcolor="white")
+        st.plotly_chart(fig)
