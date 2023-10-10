@@ -3,7 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import hiplot as hip
 import seaborn as sns
-import plotly
+import plotly.express as px
 
 df1=pd.read_csv('data.csv')
 st.write("Fawaz Imtiaz")
