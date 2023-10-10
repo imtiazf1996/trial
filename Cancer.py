@@ -74,7 +74,7 @@ if st.button("Generate Plot"):
         sns.histplot(data=df, x=xv, hue=zv, kde=True)
         st.pyplot(fig)
     
-    elif selected_plot == "Scatter Plot":
+    elif plot_selection == "Scatter Plot":
         st.subheader("Scatter Plot")
         fig = px.scatter(df, x=xv, y=yv, color=zv, title="Scatter Plot")
         fig.update_traces(marker=dict(size=6), selector=dict(mode='markers+text'))
